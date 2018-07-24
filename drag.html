@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="screen-orientation" content="portrait"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <title>拖拽demo</title>
+    <style>
+        body{
+            padding:20px;
+        }
+        div{
+            width:200px;
+            height:200px;
+            cursor: move;
+        }
+        #drag1{
+            background: red;
+        }
+        #drag2{
+            background: blue;
+        }
+        #drag3{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="drag1"></div>
+    <div id="drag2"></div>
+    <div id="drag3"></div>
+
+    <!--<script src="drag.js"></script>-->
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="jq-drag.js"></script>
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $("#drag1").becomDrag();
+            $("#drag2") .becomDrag();
+            $("#drag3").becomDrag();
+        })
+    </script>
+</body>
+</html>
