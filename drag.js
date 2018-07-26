@@ -4,6 +4,8 @@
 ~(() => {
     //私有属性  不需要被实例访问
     let transform = getTransform();
+    //私有变量  供内部方法访问控制元素的层级关系
+    let startZ = 1;
 
     //私有方法  不需要被实例访问  用来获取transform的兼容写法
     function getTransform(){
@@ -38,12 +40,16 @@
             const pos = {x:0,y:0};
             if(transform){
                 let transformVal = this.getStyle(transform);
+                let temp ;
                 if(transformVal === 'none'){
-                    this.ele.style[transform] = 'translate(0,0)';
-                }else{
-                    let temp = transformVal.match(/-?\d+/g);
+                    this.ele.style[transform] = 'translate3d(0,0,0)';
+                    temp = this.getStyle(transform).match(/-?\d+/g);
                     pos.x = parseInt(temp[4].trim());
                     pos.y = parseInt(temp[5].trim());
+                }else{
+                    temp = transformVal.match(/-?\d+/g);
+                    pos.x = parseInt(temp[13].trim());
+                    pos.y = parseInt(temp[14].trim());
                 }
             }else{
                 if(this.getStyle('position') === 'static'){
@@ -59,7 +65,7 @@
         //定义设置当前元素位置的方法
         setPosition(pos){
             if(transform){
-                this.ele.style[transform] = `translate(${pos.x}px,${pos.y}px)`;
+                this.ele.style[transform] = `translate3d(${pos.x}px,${pos.y}px,${startZ}px)`;
             }else{
                 this.ele.style.left = `${pos.x}px`;
                 this.ele.style.top = `${pos.y}px`;
@@ -71,11 +77,13 @@
             let self = this;
             this.ele.addEventListener('mousedown',start,false);
             function start(e){
+                e.preventDefault();
                 let pos = self.getPosition();
                 self.startX = e.pageX;
                 self.startY = e.pageY;
                 self.sourceX = pos.x;
                 self.sourceY = pos.y;
+                startZ ++;
                 document.addEventListener('mousemove',move,false);
                 document.addEventListener('mouseup',end,false);
             }

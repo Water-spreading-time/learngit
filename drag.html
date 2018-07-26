@@ -13,6 +13,7 @@
     <style>
         body{
             padding:20px;
+            transform-style: preserve-3d;
         }
         div{
             width:200px;
@@ -40,11 +41,17 @@
     <script src="jquery-3.2.1.min.js"></script>
     <script src="jq-drag.js"></script>
     <script type="text/javascript">
+        //原生写法
+        // new Drag("drag1");
+        // new Drag("drag2");
+        // new Drag("drag3");
+
+        //jq写法
         $(document).ready(() => {
             $("#drag1").becomDrag();
             $("#drag2") .becomDrag();
             $("#drag3").becomDrag();
-        })
+        });
     </script>
 </body>
 </html>
