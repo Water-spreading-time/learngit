@@ -25,10 +25,6 @@
     //拖拽方法的原型
     Drag.prototype = {
         constructor:Drag,
-        //定义初始化方法
-        init(){
-            this.setDrag();
-        },
 
         //定义获取当前元素的属性的方法
         getStyle(property){
@@ -114,7 +110,7 @@
         this.startY = 0;
         this.sourceX = 0;
         this.sourceY = 0;
-        this.init();
+        this.setDrag();
     }
 
     //对外暴露接口

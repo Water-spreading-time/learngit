@@ -8,9 +8,6 @@
     //为构造函数添加原型方法
     Drag.prototype = {
         constructor:Drag,
-        init(){
-            this.setDrag()
-        },
 
         // 获取元素的位置
         getPosition(){
@@ -63,7 +60,7 @@
         this.startY = 0;
         this.curosX = 0;
         this.curosY = 0;
-        this.init();
+        this.setDrag();
     }
 
     window.Drag = Drag;

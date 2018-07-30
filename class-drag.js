@@ -10,10 +10,6 @@
             this.startY = 0;
             this.curosX = 0;
             this.curosY = 0;
-            this.init();
-        }
-
-        init(){
             this.setDrag();
         }
 
